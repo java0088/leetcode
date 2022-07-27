@@ -2,4 +2,5 @@
 // import './topic/22-generateParenthesis'
 // import './topic/50-pow'
 // import './topic/55-maxSubArray'
-import './topic/58-lengthOfLastWord'
+// import './topic/58-lengthOfLastWord'
+import './topic/66-plusOne'

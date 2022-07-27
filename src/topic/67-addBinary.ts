@@ -6,13 +6,13 @@
  * 给你两个二进制字符串，返回它们的和（用二进制表示）。
  * 输入为 非空 字符串且只包含数字 1 和 0。
  */
-var addBinary = function(a, b) {
-  let result = []
+var addBinary = function (a, b) {
+  let result: any[] = []
   let d = 0
   let i = a.length - 1
   let j = b.length - 1
 
-  while(i >= 0 || j >= 0) {
+  while (i >= 0 || j >= 0) {
     let n1 = i < 0 ? 0 : +a[i]
     let n2 = j < 0 ? 0 : +b[j]
     const res = n1 + n2 + d

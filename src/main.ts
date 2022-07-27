@@ -4,4 +4,7 @@
 // import './topic/55-maxSubArray'
 // import './topic/58-lengthOfLastWord'
 // import './topic/66-plusOne'
-import './topic/67-addBinary'
+// import './topic/67-addBinary'
+import './topic/69-mySqrt'
+// import './topic/148-sortList'
+// import './topic/151-reverseWords'

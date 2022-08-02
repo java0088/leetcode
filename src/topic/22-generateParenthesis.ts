@@ -5,10 +5,27 @@
  * @return {string[]}
  */
 var generateParenthesis = function (n) {
-  const arr = new Array(n).fill(0).map(() => ['(', ')'])
+  const list = []
+  backtrack(list, [], 0, 0, n)
+  function backtrack(list, cur, open, close, max) {
+    if (cur.length === max * 2) {
+      list.push(cur.join(''))
+      return
+    }
 
+    if (open < max) {
+      cur.push('(')
+      backtrack(list, cur, open + 1, close, max);
+      cur.pop()
+    }
 
-  return arr
+    if (close < open) {
+      cur.push(')');
+      backtrack(list, cur, open, close + 1, max);
+      cur.pop()
+    }
+  }
+  return list
 };
 
 console.log(generateParenthesis(3))

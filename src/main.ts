@@ -15,5 +15,8 @@
 // import './topic/88-merge'
 // import './topic/94-inorderTraversal'
 // import './topic/102-levelOrder'
-import './topic/107-levelOrderBottom'
-
+// import './topic/107-levelOrderBottom'
+// import './topic/43-multiply'
+// import './topic/46-permute'
+// import './topic/125-isPalindrome'
+import './topic/131-partition'

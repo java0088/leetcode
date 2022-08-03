@@ -21,4 +21,6 @@
 // import './topic/125-isPalindrome'
 // import './topic/131-partition'
 // import './topic/19-removeNthFromEnd'
-import './topic/61-rotateRight'
+// import './topic/61-rotateRight'
+// import './topic/82-deleteDuplicates'
+import './topic/328-oddEvenList'

@@ -19,4 +19,6 @@
 // import './topic/43-multiply'
 // import './topic/46-permute'
 // import './topic/125-isPalindrome'
-import './topic/131-partition'
+// import './topic/131-partition'
+// import './topic/19-removeNthFromEnd'
+import './topic/61-rotateRight'

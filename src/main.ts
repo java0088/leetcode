@@ -23,4 +23,6 @@
 // import './topic/19-removeNthFromEnd'
 // import './topic/61-rotateRight'
 // import './topic/82-deleteDuplicates'
-import './topic/328-oddEvenList'
+// import './topic/328-oddEvenList'
+import './topic/141-hasCycle'
+import './topic/1169-mergeInBetween'

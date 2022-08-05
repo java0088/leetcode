@@ -29,4 +29,5 @@
 // import './topic/1721-swapNodes'
 // import './topic/34-searchRange'
 // import './topic/3-lengthOfLongestSubstring'
-import './topic/17-letterCombinations'
+// import './topic/17-letterCombinations'
+import './topic/56-merge'

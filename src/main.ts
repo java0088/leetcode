@@ -31,5 +31,5 @@
 // import './topic/3-lengthOfLongestSubstring'
 // import './topic/17-letterCombinations'
 // import './topic/56-merge'
-// import './topic/5-longestPalindrome'
-import './topic/165-compareVersion'
+import './topic/5-longestPalindrome'
+// import './topic/165-compareVersion'

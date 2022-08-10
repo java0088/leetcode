@@ -33,4 +33,5 @@
 // import './topic/56-merge'
 // import './topic/5-longestPalindrome'
 // import './topic/165-compareVersion'
-import './topic/10-isMatch'
+// import './topic/10-isMatch'
+import './topic/33-search'

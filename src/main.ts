@@ -37,4 +37,5 @@
 // import './topic/33-search'
 // import './topic/48-rotate'
 // import './topic/73-setZeroes'
-import './topic/57-insert'
+// import './topic/57-insert'
+import './topic/86-partition'

@@ -41,4 +41,6 @@
 // import './topic/86-partition'
 // import './topic/80-removeDuplicates'
 // import './topic/59-generateMatrix'
-import './topic/75-sortColors'
+// import './topic/75-sortColors'
+// import './topic/92-reverseBetween'
+import './topic/15-threeSum'

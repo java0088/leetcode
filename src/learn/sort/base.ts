@@ -109,14 +109,12 @@ function quickSort(arr) {
 function heapSort(arr) {
   if (arr.length < 2) return
 
-  for (let i = arr.length; i >= 0; i--) {
+  for (let i = arr.length - 1; i >= 0; i--) {
     float(arr, i)
   }
-  // [66, 11, 22, 33, 88, 44, 55, 99, 77]
   let heapSize = arr.length
   swap(arr, 0, --heapSize)
 
-  // [33, 88, 77, 66, 44, 11, 55, 22, 99]
   for (let i = 0; i < heapSize; i++) {
     sunk(arr, i, heapSize)
     swap(arr, 0, --heapSize)
@@ -149,13 +147,55 @@ function heapSort(arr) {
   }
 }
 
-let arr = [66, 11, 22, 33, 88, 44, 55, 99, 77]
+function bucketSort(arr) {
+  if (arr.length < 2) return
+  const radix = 10
+  const num = getMaxNum(arr, radix)
+  console.log(num)
+  sort(arr, num)
+
+  function sort(arr, num) {
+    let d = 1
+    for (let i = 1; i <= num; i++) {
+      // 准备10个数组
+      let help = new Array(10).fill(0).map(() => [])
+      for (let j = 0; j < arr.length; j++) {
+        let index = Math.floor(arr[j] / d) % radix
+        help[index].push(arr[j])
+      }
+
+      // 将help中的数据依次拷贝到数组中
+      let index = 0
+      for (let j = 0; j < help.length; j++) {
+        for (let k = 0; k < help[j].length; k++) {
+          arr[index++] = help[j][k]
+        }
+      }
+
+      d *= 10
+    }
+  }
+
+  function getMaxNum(arr, radix) {
+    let max = Math.max(...arr)
+
+    let num = 0
+    while (max > 0) {
+      num++
+      max = Math.floor(max / radix)
+    }
+
+    return num
+  }
+}
+
+let arr = [66, 11, 22, 33, 88, 9654, 44, 55, 99, 77]
 console.log('排序前', arr)
-quickSort(arr)
+bucketSort(arr)
 console.log('排序后', arr)
 
 // 准确性测试
-console.log(testRandom(quickSort))
+console.log(testRandom(bucketSort))
 function testRandom(sortFn) {
   if (!sortFn || typeof sortFn !== 'function') console.error('sortFn must be a function!')
   let size = 10000

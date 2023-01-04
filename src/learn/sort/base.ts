@@ -151,7 +151,6 @@ function bucketSort(arr) {
   if (arr.length < 2) return
   const radix = 10
   const num = getMaxNum(arr, radix)
-  console.log(num)
   sort(arr, num)
 
   function sort(arr, num) {
@@ -189,13 +188,59 @@ function bucketSort(arr) {
   }
 }
 
+function bucketSort2(arr) {
+  if (arr.length < 2) return
+  const radix = 10
+  const num = getMaxNum(arr, radix)
+  sort(arr, num)
+
+  function sort(arr, num) {
+    let d = 1
+    for (let i = 1; i <= num; i++) {
+      let counts = new Array(10).fill(0)
+      for (let j = 0; j < arr.length; j++) {
+        let index = Math.floor(arr[j] / d) % radix
+        counts[index]++
+      }
+
+      for (let j = 1; j < counts.length; j++) {
+        counts[j] = counts[j] + counts[j - 1]
+      }
+      // 将help中的数据依次拷贝到数组中
+      let help = []
+      for (let j = arr.length - 1; j >= 0; j--) {
+        let index = Math.floor(arr[j] / d) % radix
+        help[counts[index] - 1] = arr[j]
+        counts[index]--
+      }
+
+      for (let j = 0; j < help.length; j++) {
+        arr[j] = help[j]
+      }
+      d *= 10
+    }
+  }
+
+  function getMaxNum(arr, radix) {
+    let max = Math.max(...arr)
+
+    let num = 0
+    while (max > 0) {
+      num++
+      max = Math.floor(max / radix)
+    }
+
+    return num
+  }
+}
+
 let arr = [66, 11, 22, 33, 88, 9654, 44, 55, 99, 77]
 console.log('排序前', arr)
-bucketSort(arr)
+bucketSort2(arr)
 console.log('排序后', arr)
 
 // 准确性测试
-console.log(testRandom(bucketSort))
+console.log(testRandom(bucketSort2))
 function testRandom(sortFn) {
   if (!sortFn || typeof sortFn !== 'function') console.error('sortFn must be a function!')
   let size = 10000

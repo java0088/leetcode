@@ -90,7 +90,82 @@ function afterOrderWithStack(tree) {
     }
 }
 
-const tree = new TreeNode(1, new TreeNode(2, new TreeNode(22), new TreeNode(222)), new TreeNode(3, new TreeNode(33), new TreeNode(333)))
+// 层序遍历
+function orderLevel(tree) {
+    if (!tree) return 0
+    
+    let queue = [tree]
+    while(queue.length !== 0) {
+        const cur = queue.shift()
+
+        console.log(cur.val)
+        if (cur.left) {
+            queue.push(cur.left)
+        }
+        if (cur.right) {
+            queue.push(cur.right)
+        }
+    }
+}
+
+// 二叉树的最大层数
+function getTreeMaxLevel(tree) {
+    // 队列版
+    // if (!tree) return 0
+    // let queue = [{ level: 1, node: tree }]
+    // let maxLevel = 0
+    // while(queue.length !== 0) {
+    //     const { level, node } = queue.shift()
+
+    //     if (node.left) {
+    //         queue.push({ node: node.left, level: level + 1 })
+    //     }
+    //     if (node.right) {
+    //         queue.push({ node: node.right, level: level + 1 })
+    //     }
+
+    //     maxLevel = Math.max(level, maxLevel)
+    // }
+
+    // return maxLevel
+
+    // 递归版
+
+    function process(node) {
+        if (!node) return 0
+
+        const leftH = process(node.left)
+        const rightH = process(node.right)
+
+        const maxHeight = Math.max(leftH, rightH) + 1
+
+        return maxHeight
+    }
+
+    return process(tree)
+}
+
+function isBalanceTree(tree) {
+    if (!tree) return true
+    
+    function process(node) {
+        if (!node) return { isBalance: true, height: 0 }
+
+        const leftInfo = process(node.left)
+        const rightInfo = process(node.right)
+
+        const maxHeight = Math.max(leftInfo.height, rightInfo.height) + 1
+
+        if (leftInfo.isBalance && rightInfo.isBalance && Math.abs(leftInfo.height - rightInfo.height) <= 1) {
+            return { isBalance: true, height: maxHeight }
+        } else {
+            return { isBalance: false, height: maxHeight }
+        }
+    }
+    return process(tree).isBalance
+}
+
+const tree = new TreeNode(1, new TreeNode(2, new TreeNode(22, new TreeNode(66)), new TreeNode(222)), new TreeNode(3, new TreeNode(33), new TreeNode(333)))
 
 // 递归版
 // preOrder(tree) // 1, 2, 22, 222, 3, 33, 333
@@ -100,4 +175,8 @@ const tree = new TreeNode(1, new TreeNode(2, new TreeNode(22), new TreeNode(222)
 // 非递归版
 // preOrderWithStack(tree) // 1, 2, 22, 222, 3, 33, 333
 // inOrderWithStack(tree) // 22, 2, 222, 1, 33, 1, 333
-afterOrderWithStack(tree) // 22, 222, 2, 33, 333, 3, 1
+// afterOrderWithStack(tree) // 22, 222, 2, 33, 333, 3, 1
+
+// console.log(orderLevel(tree))
+// console.log(getTreeMaxLevel(tree))
+console.log(isBalanceTree(tree))

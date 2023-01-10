@@ -47,4 +47,7 @@
 // import './topic/11-maxArea'
 // import './topic/349-intersection'
 // import './topic/350-intersect'
-import './topic/347-topKFrequent'
+// import './topic/347-topKFrequent'
+
+// learn
+import './learn'

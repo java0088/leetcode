@@ -78,6 +78,38 @@ function maxValue2(w, v, bag) {
     }
 }
 
-const weight = [3, 2, 5], values = [6, 4, 10]
+// const weight = [3, 2, 5], values = [6, 4, 10]
 
-console.log(maxValue2(weight, values, 6))
+// console.log(maxValue2(weight, values, 6))
+
+// n 皇后
+function nQueen1(n) {
+    if (n < 3) return 0
+    const record = []
+    return process(n, record, 0)
+
+    function process(n, record, i) {
+        if (i === n) return 1
+        let res = 0
+        for (let j = 0; j < n; j++) {
+            const a = isValid(record, i, j)
+            if (a) {
+                record[i] = j
+                res += process(n, record, i + 1)
+            }
+        }
+
+        return res
+    }
+
+    function isValid(record, i, j) {
+        for (let k = 0; k < i; k++) {
+            if (record[k] === j || Math.abs(record[k] - j) === Math.abs(i - k)) {
+                return false
+            }
+        }
+        return true
+    }
+}
+
+console.log(nQueen1(8))
